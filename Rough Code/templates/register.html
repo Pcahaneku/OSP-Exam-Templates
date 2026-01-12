@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="register-style.css">
+</head>
+<body>
+
+<div class="container">
+    <h2>Sign Up</h2>
+
+    <form form class="forms" action="{{url_for('register')}}" method="POST">
+        <input type="text" name="firstname" placeholder="FirstName" required>
+        <input type="text" name="lastname" placeholder="LastName" required>
+        <input type="email" name="email" placeholder="Email Address" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <input type="date" name="dob" placeholder="Date Of Birth" required>
+
+        <button type="submit">Create Account</button>
+    </form>
+    
+    <!---
+    <p class="switch">
+        Already have an account?
+        <a href="{{ url_for('login') }}">Login</a>
+    </p>
+    -->
+
+   
+</div>
+
+<script src="{{ url_for('static', filename='auth.js') }}"></script>
+</body>
+</html>

@@ -19,11 +19,11 @@ with app.app_context():
 def homepage():
     return render_template('index.html')
 
-@app.route('/signup') #This leads users to the SignUp Page
-def signup():
-    return render_template('signup.html') 
+@app.route('/register') #This leads users to the Registration Page
+def register():
+    return render_template('register.html') 
 
-@app.route('/signup', methods=['POST'])
+@app.route('/register', methods=['POST'])
 def add_users():
     if request.method == 'POST':
 
@@ -48,6 +48,15 @@ def add_users():
         try:
             db.session.add(new_user) 
             db.session.commit()
-            return render_template('/login.html') #directs users to the Login Page
+            return render_template('login.html') #directs users to the Login Page
         except Exception as e:
             return f"An error occured: {e}"
+        
+@app.route('/login') #This leads users to the Login Page
+def login():
+    return render_template('login.html') 
+
+
+#This helps in running the app in debug mode. By reloading the server when code changes.
+if __name__ == '__main__':
+    app.run(debug=True)
