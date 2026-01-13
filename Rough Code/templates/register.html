@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>Sign Up</title>
-    <link rel="stylesheet" href="register-style.css">
+    <link rel="stylesheet" href="/static/register-style.css">
 </head>
 <body>
 
 <div class="container">
-    <h2>Sign Up</h2>
+    <h2>Register</h2>
 
     <form form class="forms" action="{{url_for('register')}}" method="POST">
-        <input type="text" name="firstname" placeholder="FirstName" required>
-        <input type="text" name="lastname" placeholder="LastName" required>
+        <input type="text" name="firstname" placeholder="FirstName" required minlength="2">
+        <input type="text" name="lastname" placeholder="LastName" required minlength="2">
         <input type="email" name="email" placeholder="Email Address" required>
-        <input type="password" name="password" placeholder="Password" required>
+        <input type="password" name="password" placeholder="Password" required minlength="8" >
         <input type="date" name="dob" placeholder="Date Of Birth" required>
 
         <button type="submit">Create Account</button>

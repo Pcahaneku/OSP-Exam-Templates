@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, session, redirect, url_for
 from datetime import datetime
 from model import db, User
 from flask_bcrypt import Bcrypt
@@ -40,10 +40,8 @@ def add_users():
                 dob = datetime.strptime(dob, '%Y-%m-%d').date() #Converts the date of birth string to a date object
             except ValueError:
                 return "Invalid date format. Please use YYYY-MM-DD."
-        
-        user_option = request.form.get('user_option')
 
-        new_user = User(firstname=firstname, lastname=lastname, email=email, password=hashed_password, dob=dob, user_option=user_option)
+        new_user = User(firstname=firstname, lastname=lastname, email=email, password=hashed_password, dob=dob)
 
         try:
             db.session.add(new_user) 
@@ -55,6 +53,8 @@ def add_users():
 @app.route('/login') #This leads users to the Login Page
 def login():
     return render_template('login.html') 
+
+
 
 
 #This helps in running the app in debug mode. By reloading the server when code changes.
